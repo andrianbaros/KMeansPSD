@@ -116,22 +116,6 @@ ax_elbow.grid(True)
 st.pyplot(fig_elbow)
 
 # ===============================
-# SCATTER SEBELUM CLUSTERING
-# ===============================
-st.subheader("📍 Scatter Sebelum Clustering")
-
-fig_before, ax_before = plt.subplots(figsize=(8,5))
-ax_before.scatter(
-    df_clustered.index,
-    df_clustered['jumlah_korban'],
-    s=80
-)
-ax_before.set_xlabel("Kabupaten/Kota (Index)")
-ax_before.set_ylabel("Jumlah Korban")
-ax_before.set_title("Scatter Plot Sebelum Clustering")
-ax_before.set_xticks([])
-ax_before.grid(True)
-st.pyplot(fig_before)
 
 # ===============================
 # K-MEANS CLUSTERING (K = 3)
