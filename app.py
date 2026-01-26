@@ -399,7 +399,7 @@ for cluster_id in range(3):
         top3 = cluster_data.nlargest(3, 'total_korban')
         fig_top = px.bar(top3, x='total_korban', y='nama_kabupaten_kota', orientation='h',
                         color_discrete_sequence=[color_palette[cluster_id]], text='total_korban')
-        fig_top.update_layout(title=f"Top 3 Kabupaten dalam Cluster {cluster_id}", 
+        fig_top.update_layout(title=f"Top Kabupaten dalam Cluster {cluster_id}", 
                              xaxis_title="Total Korban", yaxis_title="", 
                              template="plotly_white", height=300, showlegend=False)
         fig_top.update_traces(textposition='auto')
