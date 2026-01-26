@@ -601,17 +601,29 @@ if len(available_features) >= 2:
         'PC2': X_pca[:, 1],
         'Cluster': [f"Cluster {c}" for c in df_clustered['cluster'].values],
         'nama': df_clustered['nama_kabupaten_kota'].values,
-        'korban': df_clustered['total_korban'].values
+        'total_korban': df_clustered['total_korban'].values,
+        'rasio_anak': df_clustered['rasio_anak'].values
     })
-    
-    fig_pca = px.scatter(df_pca, x='PC1', y='PC2', color='Cluster', size='korban',
-                        hover_name='nama', hover_data={'korban': ':.0f'},
-                        title=f'Visualisasi PCA Hasil Klaster K-Means: {pca.explained_variance_ratio_.sum():.1%}',
-                        size_max=50, color_discrete_map={
-                            'Cluster 0': '#667eea',
-                            'Cluster 1': '#f093fb',
-                            'Cluster 2': '#43e97b'
-                        })
+    fig_pca = px.scatter(
+        df_pca,
+        x='PC1',
+        y='PC2',
+        color='Cluster',
+        size='total_korban',
+        hover_name='nama',
+        hover_data={
+            'total_korban': ':.0f',
+            'rasio_anak': ':.1f'
+        },
+        title=f'Visualisasi PCA Hasil Klaster K-Means: {pca.explained_variance_ratio_.sum():.1%}',
+        size_max=50,
+        color_discrete_map={
+            'Cluster 0': '#667eea',
+            'Cluster 1': '#f093fb',
+            'Cluster 2': '#43e97b'
+        }
+    )
+
     
     fig_pca.update_layout(height=600, template="plotly_white", font=dict(size=11))
     st.plotly_chart(fig_pca, use_container_width=True)
